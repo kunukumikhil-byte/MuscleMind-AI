@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fitness Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<h1>AI Fitness Coach</h1>
+
+<input type="text"
+       id="chatMessage"
+       placeholder="Ask fitness question">
+
+<button onclick="sendChat()">
+    Ask AI
+</button>
+
+<div id="chatResult"></div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

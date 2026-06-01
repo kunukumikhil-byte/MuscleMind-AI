@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diet Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<h1>AI Diet Planner</h1>
+
+<select id="dietGoal">
+    <option>Muscle Gain</option>
+    <option>Fat Loss</option>
+</select>
+
+<select id="food">
+    <option>Veg</option>
+    <option>Non-Veg</option>
+</select>
+
+<input type="text" id="budget" placeholder="Budget">
+
+<input type="number" id="meals" placeholder="Meals Per Day">
+
+<button onclick="generateDiet()">
+    Generate Diet
+</button>
+
+<div id="dietResult"></div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

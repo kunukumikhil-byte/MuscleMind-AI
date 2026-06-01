@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Progress Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Progress Tracker</h1>
+
+<input type="number"
+       id="progressWeight"
+       placeholder="Weight">
+
+<input type="number"
+       id="waist"
+       placeholder="Waist Size">
+
+<textarea id="notes"
+          placeholder="Notes">
+</textarea>
+
+<button onclick="saveProgress()">
+    Save Progress
+</button>
+
+<h2>Saved Progress</h2>
+
+{% for row in records %}
+<div class="card">
+    <p>Weight: {{ row.weight }}</p>
+    <p>Waist: {{ row.waist }}</p>
+    <p>Notes: {{ row.notes }}</p>
+</div>
+{% endfor %}
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
