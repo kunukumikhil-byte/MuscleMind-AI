@@ -1,44 +1,183 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
     <title>Progress Tracker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+
 </head>
+
 <body>
 
-<div class="container">
+    <div class="navbar">
 
-<h1>Progress Tracker</h1>
+        <h1>💪 MuscleMind AI</h1>
 
-<input type="number"
-       id="progressWeight"
-       placeholder="Weight">
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/workout">Workout</a>
+            <a href="/diet">Diet</a>
+            <a href="/chat">AI Chat</a>
+            <a href="/progress">Progress</a>
+        </div>
 
-<input type="number"
-       id="waist"
-       placeholder="Waist Size">
+    </div>
 
-<textarea id="notes"
-          placeholder="Notes">
-</textarea>
 
-<button onclick="saveProgress()">
-    Save Progress
-</button>
+    <div class="container">
 
-<h2>Saved Progress</h2>
+        <h1>📈 Progress Tracker</h1>
 
-{% for row in records %}
-<div class="card">
-    <p>Weight: {{ row.weight }}</p>
-    <p>Waist: {{ row.waist }}</p>
-    <p>Notes: {{ row.notes }}</p>
-</div>
-{% endfor %}
+        <div class="form-box">
 
-</div>
+            <input
+                type="number"
+                id="progressWeight"
+                placeholder="Weight (kg)">
 
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+            <input
+                type="number"
+                id="waist"
+                placeholder="Waist Size">
+
+            <textarea
+                id="notes"
+                placeholder="Notes">
+            </textarea>
+
+            <button
+                type="button"
+                onclick="saveProgress()">
+
+                Save Progress
+
+            </button>
+
+        </div>
+
+        <div class="chart-container">
+
+            <h2>Weight Progress</h2>
+
+            <canvas id="weightChart">
+            </canvas>
+
+        </div>
+
+        <div class="chart-container">
+
+            <h2>Waist Progress</h2>
+
+            <canvas id="waistChart">
+            </canvas>
+
+        </div>
+
+        <h2 style="margin-top:40px;">
+            Saved Progress
+        </h2>
+
+        {% for row in records %}
+
+        <div class="card">
+
+            <p>
+                Weight:
+                {{ row.weight }} kg
+            </p>
+
+            <p>
+                Waist:
+                {{ row.waist }}
+            </p>
+
+            <p>
+                Notes:
+                {{ row.notes }}
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+<script>
+
+const labels =
+{{ labels | tojson }};
+
+const weights =
+{{ weights | tojson }};
+
+const waists =
+{{ waists | tojson }};
+
+
+// Weight Chart
+
+new Chart(
+    document.getElementById(
+        "weightChart"
+    ),
+{
+    type: "line",
+
+    data: {
+
+        labels: labels,
+
+        datasets: [{
+            label: "Weight (kg)",
+            data: weights,
+            borderWidth: 3,
+            tension: 0.3
+        }]
+    }
+});
+
+
+// Waist Chart
+
+new Chart(
+    document.getElementById(
+        "waistChart"
+    ),
+{
+    type: "line",
+
+    data: {
+
+        labels: labels,
+
+        datasets: [{
+            label: "Waist Size",
+            data: waists,
+            borderWidth: 3,
+            tension: 0.3
+        }]
+    }
+});
+
+</script>
+
+<script src="{{ url_for(
+'static',
+filename='js/script.js'
+) }}"></script>
 
 </body>
 </html>

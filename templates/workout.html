@@ -1,35 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>MuscleMind AI</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Generator - MuscleMind AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-<div class="navbar">
-    <h1>💪 MuscleMind AI</h1>
+    <div class="navbar">
+        <h1>💪 MuscleMind AI</h1>
 
-    <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/workout">Workout</a>
-        <a href="/diet">Diet</a>
-        <a href="/chat">AI Chat</a>
-        <a href="/progress">Progress</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/workout">Workout</a>
+            <a href="/diet">Diet</a>
+            <a href="/chat">AI Chat</a>
+            <a href="/progress">Progress</a>
+        </div>
     </div>
-</div>
 
-<div class="hero">
-    <h1>Train Smarter with AI</h1>
+    <div class="container">
 
-    <p>
-        Personalized Workouts, Diet Plans,
-        and Fitness Coaching powered by AI.
-    </p>
+        <h1>🏋️ AI Workout Generator</h1>
 
-    <a href="/workout">
-        <button>Start Training</button>
-    </a>
-</div>
+        <p>
+            Enter your details to generate
+            a personalized workout plan.
+        </p>
+
+        <div class="form-box">
+
+            <label>Weight (kg)</label>
+            <input
+                type="number"
+                id="weight"
+                placeholder="Enter your weight">
+
+            <label>Height (ft)</label>
+            <input
+                type="text"
+                id="height"
+                placeholder="Example: 6.1">
+
+            <label>Goal</label>
+            <select id="goal">
+                <option value="Muscle Gain">
+                    Muscle Gain
+                </option>
+
+                <option value="Fat Loss">
+                    Fat Loss
+                </option>
+
+                <option value="Maintenance">
+                    Maintenance
+                </option>
+            </select>
+
+            <label>Experience Level</label>
+            <select id="experience">
+                <option value="Beginner">
+                    Beginner
+                </option>
+
+                <option value="Intermediate">
+                    Intermediate
+                </option>
+
+                <option value="Advanced">
+                    Advanced
+                </option>
+            </select>
+
+            <label>Workout Days Per Week</label>
+            <input
+                type="number"
+                id="days"
+                placeholder="Example: 5">
+
+            <button
+                type="button"
+                onclick="generateWorkout()">
+
+                Generate Workout
+            </button>
+
+        </div>
+
+        <div class="result-box">
+            <h2>Your AI Workout Plan</h2>
+
+            <div id="workoutResult">
+                Your workout plan will appear here...
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static',
+    filename='js/script.js') }}">
+    </script>
 
 </body>
 </html>

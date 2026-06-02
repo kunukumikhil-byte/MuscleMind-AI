@@ -1,35 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
     <title>MuscleMind AI</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
 </head>
+
 <body>
 
-<div class="navbar">
-    <h1>💪 MuscleMind AI</h1>
+    <!-- NAVBAR -->
 
-    <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/workout">Workout</a>
-        <a href="/diet">Diet</a>
-        <a href="/chat">AI Chat</a>
-        <a href="/progress">Progress</a>
+    <div class="navbar">
+
+        <h1>💪 MuscleMind AI</h1>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/workout">Workout</a>
+            <a href="/diet">Diet</a>
+            <a href="/chat">AI Chat</a>
+            <a href="/progress">Progress</a>
+        </div>
+
     </div>
-</div>
 
-<div class="hero">
-    <h1>Train Smarter with AI</h1>
+    <!-- HERO -->
 
-    <p>
-        Personalized Workouts, Diet Plans,
-        and Fitness Coaching powered by AI.
-    </p>
+    <section class="hero">
 
-    <a href="/workout">
-        <button>Start Training</button>
-    </a>
-</div>
+        <h1>
+            Train Smarter with AI
+        </h1>
+
+        <p>
+            Personalized workouts,
+            diet plans, and fitness coaching —
+            powered by Artificial Intelligence.
+        </p>
+
+        <a href="/workout">
+            <button>
+                Start Your Fitness Journey
+            </button>
+        </a>
+
+    </section>
+
+    <!-- FEATURE CARDS -->
+
+    <section class="features">
+
+        <div class="feature-card">
+            <h2>🏋️ AI Workout Generator</h2>
+
+            <p>
+                Get a customized workout
+                split based on your
+                body, goal, and experience.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h2>🥗 AI Diet Planner</h2>
+
+            <p>
+                Receive smart diet plans
+                for muscle gain, fat loss,
+                or maintenance.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h2>💬 Fitness Coach AI</h2>
+
+            <p>
+                Ask anything related
+                to gym, diet, protein,
+                recovery, and fitness.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h2>📈 Progress Tracking</h2>
+
+            <p>
+                Track your body
+                transformation journey
+                with progress logs.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- MOTIVATION -->
+
+    <section class="motivation">
+
+        <h2>
+            “Discipline beats motivation.”
+        </h2>
+
+        <p>
+            Stay consistent. Build muscle.
+            Become your strongest version.
+        </p>
+
+    </section>
 
 </body>
 </html>
