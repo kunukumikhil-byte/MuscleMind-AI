@@ -1,28 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
     <title>Fitness Chat</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+
 </head>
+
 <body>
 
 <div class="container">
 
-<h1>AI Fitness Coach</h1>
+    <h1>💪 MuscleMind Chat</h1>
 
-<input type="text"
-       id="chatMessage"
-       placeholder="Ask fitness question">
+    <input type="text"
+           id="chatMessage"
+           placeholder="Ask fitness question">
 
-<button onclick="sendChat()">
-    Ask AI
-</button>
+    <button onclick="sendMessage()">
+        Ask AI
+    </button>
 
-<div id="chatResult"></div>
+    <div id="chatResult"
+         class="ai-response">
+    </div>
 
 </div>
 
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script>
+
+async function sendMessage(){
+
+    const message =
+    document
+    .getElementById(
+    "chatMessage"
+    ).value
+
+    const response =
+    await fetch(
+    "/fitness_chat",
+
+    {
+        method:"POST",
+
+        headers:{
+            "Content-Type":
+            "application/json"
+        },
+
+        body:JSON.stringify({
+            message
+        })
+    })
+
+    const data =
+    await response.json()
+
+    document
+    .getElementById(
+    "chatResult"
+    ).innerHTML =
+    data.response
+}
+
+</script>
 
 </body>
 </html>

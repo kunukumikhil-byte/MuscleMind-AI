@@ -1,38 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Diet Planner</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
+    <title>Diet AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
 </head>
+
 <body>
 
 <div class="container">
 
-<h1>AI Diet Planner</h1>
+    <h1>🥗 Diet AI</h1>
 
-<select id="dietGoal">
-    <option>Muscle Gain</option>
-    <option>Fat Loss</option>
-</select>
+    <form id="dietForm">
 
-<select id="food">
-    <option>Veg</option>
-    <option>Non-Veg</option>
-</select>
+        <input type="text"
+               id="goal"
+               placeholder="Goal"
+               required>
 
-<input type="text" id="budget" placeholder="Budget">
+        <input type="text"
+               id="food"
+               placeholder="Food Preference"
+               required>
 
-<input type="number" id="meals" placeholder="Meals Per Day">
+        <input type="text"
+               id="budget"
+               placeholder="Budget"
+               required>
 
-<button onclick="generateDiet()">
-    Generate Diet
-</button>
+        <input type="number"
+               id="meals"
+               placeholder="Meals Per Day"
+               required>
 
-<div id="dietResult"></div>
+        <button type="submit">
+            Generate Diet
+        </button>
+
+    </form>
+
+    <div id="dietResult"
+         class="ai-response">
+    </div>
 
 </div>
 
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script>
+
+document
+.getElementById(
+"dietForm"
+)
+
+.addEventListener(
+"submit",
+
+async function(e){
+
+    e.preventDefault()
+
+    const response =
+    await fetch(
+    "/generate_diet",
+
+    {
+        method:"POST",
+
+        headers:{
+            "Content-Type":
+            "application/json"
+        },
+
+        body:JSON.stringify({
+
+            goal:
+            document
+            .getElementById(
+            "goal"
+            ).value,
+
+            food:
+            document
+            .getElementById(
+            "food"
+            ).value,
+
+            budget:
+            document
+            .getElementById(
+            "budget"
+            ).value,
+
+            meals:
+            document
+            .getElementById(
+            "meals"
+            ).value
+        })
+    })
+
+    const data =
+    await response.json()
+
+    document
+    .getElementById(
+    "dietResult"
+    ).innerHTML =
+    data.response
+})
+
+</script>
 
 </body>
 </html>
