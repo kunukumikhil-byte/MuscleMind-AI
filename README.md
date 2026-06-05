@@ -87,23 +87,28 @@ Includes **interactive charts** for:
 
 ### Home Page
 
-(Add screenshot here)
+<img width="1337" height="590" alt="image" src="https://github.com/user-attachments/assets/658c3312-5345-4cd8-92e3-19992549137d" />
+
 
 ### Workout Generator
 
-(Add screenshot here)
+<img width="1325" height="606" alt="image" src="https://github.com/user-attachments/assets/4ac85e8a-cff1-4e4c-a801-d73733ca1671" />
+
 
 ### Diet Planner
 
-(Add screenshot here)
+<img width="1130" height="525" alt="image" src="https://github.com/user-attachments/assets/29bbaf37-90d4-4a67-a8e1-5b01d74ad0ff" />
+
 
 ### AI Chat
 
-(Add screenshot here)
+<img width="1114" height="345" alt="image" src="https://github.com/user-attachments/assets/24ebe349-e230-44e3-a408-bda2d5288775" />
+
 
 ### Progress Tracker
 
-(Add screenshot here)
+<img width="1341" height="627" alt="image" src="https://github.com/user-attachments/assets/698816b5-7275-4317-8121-0e86197c28ee" />
+
 
 ---
 
