@@ -13,12 +13,31 @@ def create_tables():
     conn = connect_db()
     cursor = conn.cursor()
 
+    # ---------------- USERS TABLE ---------------- #
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        email TEXT UNIQUE NOT NULL,
+        password_hash TEXT,
+        google_id TEXT UNIQUE,
+        profile_pic TEXT
+    )
+    """)
+
+    # ---------------- PROGRESS TABLE ---------------- #
+
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS progress (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
         weight REAL,
         waist REAL,
-        notes TEXT
+        notes TEXT,
+
+        FOREIGN KEY (user_id)
+        REFERENCES users(id)
     )
     """)
 
