@@ -6,11 +6,19 @@
       "src": "app.py",
       "use": "@vercel/python",
       "config": {
-        "includeFiles": "templates/**,static/**,database.py"
+        "includeFiles": "templates/**,static/**,public/**,database.py"
       }
     }
   ],
   "routes": [
+    {
+      "src": "/css/(.*)",
+      "dest": "/public/css/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "/public/js/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "app.py"
