@@ -60,19 +60,12 @@
 
         </form>
 
-        <div class="divider">
-            OR
-        </div>
-
-        <a href="/google-login">
-
-            <button class="google-btn">
-
-                Continue with Google
-
-            </button>
-
+        {% if google_enabled %}
+        <div class="divider">OR</div>
+        <a href="/google-login" class="google-btn-link">
+            <button class="google-btn" type="button">Continue with Google</button>
         </a>
+        {% endif %}
 
         <p class="bottom-text">
 
