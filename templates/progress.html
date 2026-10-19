@@ -11,8 +11,7 @@
     <title>Progress Tracker</title>
 
     <link rel="stylesheet"
-          href="{{ url_for('static',
-          filename='css/style.css') }}">
+          href="{{ /css/style.css }}">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js">
     </script>
@@ -174,10 +173,7 @@ new Chart(
 
 </script>
 
-<script src="{{ url_for(
-'static',
-filename='js/script.js'
-) }}"></script>
+<script src="{{ /js/script.js }}"></script>
 
 </body>
 </html>
