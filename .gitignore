@@ -3,4 +3,5 @@ __pycache__/
 .env
 musclemind.db
 instance/
-.vscode/
+.vscode/.venv/
+.venv/

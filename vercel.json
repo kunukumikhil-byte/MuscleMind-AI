@@ -1,4 +1,3 @@
-
 {
   "version": 2,
   "builds": [
@@ -11,14 +10,6 @@
     }
   ],
   "routes": [
-    {
-      "src": "/css/(.*)",
-      "dest": "/public/css/$1"
-    },
-    {
-      "src": "/js/(.*)",
-      "dest": "/public/js/$1"
-    },
     {
       "src": "/(.*)",
       "dest": "app.py"
