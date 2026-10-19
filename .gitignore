@@ -5,3 +5,5 @@ musclemind.db
 instance/
 .vscode/.venv/
 .venv/
+*.py[cod]
+.pytest_cache/
