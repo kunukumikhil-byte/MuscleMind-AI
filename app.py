@@ -133,6 +133,24 @@ def safe_ai_response(prompt, feature):
         return error_json(msg,status)
 
 
+def safe_ai_response(prompt, feature):
+    try:
+        return jsonify(response=ai_completion(prompt)), 200
+    except ValueError as exc:
+        return error_json(str(exc), 400)
+    except Exception as exc:
+        app.logger.exception("%s failed", feature)
+        code=getattr(exc,"status_code",None)
+        if code == 401: msg,status="AI credentials are invalid. Please contact the administrator.",503
+        elif code == 403: msg,status="AI service denied the request. Check model access and account status.",503
+        elif code == 404: msg,status="AI model not found. Check the GROQ_MODEL setting.",503
+        elif code == 429: msg,status="AI service is busy. Please try again shortly.",429
+        elif code in (408,504) or exc.__class__.__name__ in {"APITimeoutError","Timeout"}: msg,status="AI request timed out. Please try again.",504
+        elif isinstance(exc,RuntimeError) and "not configured" in str(exc).lower(): msg,status="AI service is not configured. Please contact the administrator.",503
+        else: msg,status="AI service is temporarily unavailable. Please try again later.",503
+        return error_json(msg,status)
+
+
 @app.route("/health")
 def health():
     return jsonify({"status": "ok", "app": "MuscleMind-AI"})
